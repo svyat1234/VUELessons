@@ -15,7 +15,7 @@
             <h1>{{ title }}: {{ counter }}</h1>
             <div>
                 <button class="btn primary" v-on:click="counter++">+</button>
-                <button class="btn danger" v-on:click="counter = counter <= 0 ? 0 : counter - 1">-</button>
+                <button class="btn danger" v-on:click="counter = counter--">-</button>
             </div>
         </div>
         <!-- /.card -->
