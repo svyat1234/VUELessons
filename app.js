@@ -1,10 +1,16 @@
 const App = {
     data() {
         return {
-            counter: 0,
-            title: 'Счётчик'
+            appPlaceholder: 'Введите название заметки',
+            title: 'Заметки',
+            appInputValue: ''
         }
-    }
+    },
+    methods: {
+        appInputChanger(e) {
+            this.appInputValue = e.target.value
+        }
+    },
 }
 
 Vue.createApp(App).mount('#app')
