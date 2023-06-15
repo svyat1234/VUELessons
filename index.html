@@ -19,12 +19,19 @@
                     v-bind:placeholder="appPlaceholder" 
                     v-bind:value="appInputValue"
                     v-on:input="appInputChanger"
+                    v-on:keypress.enter="addNewAppNote"
                 >
             </div>
             <!-- /.form-control -->
-            <h2>Название: {{ appInputValue }}</h2>
-            <button class="btn">Добавить</button>
+            <button class="btn" v-on:click="addNewAppNote">Добавить</button>
             <hr>
+            <ul class="list" v-if="appNotes.length !== 0">
+                <li class="list-item" v-for="(myNote, i) in appNotes">
+                    ({{ i + 1 }}) {{ myNote }}
+                    <button class="btn danger" v-on:click="removeAppNote(i)">Удалить</button>
+                </li>
+            </ul>
+            <div v-else>Заметок пока нет.</div>
         </div>
         <!-- /.card -->
     </div>
