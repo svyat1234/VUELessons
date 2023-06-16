@@ -17,10 +17,24 @@ const App = {
                 this.appInputValue = ''
             }
         },
+        toUpperCase(item) {
+            return item.toUpperCase()
+        },
         removeAppNote(index) {
             this.appNotes.splice(index, 1)
         }
     },
+    computed: {
+        doubleCountComputed() {
+            console.log(this.appNotes);
+            return this.appNotes.length * 2
+        },
+    },
+    watch: {
+        appInputValue(value) {
+            console.log(value); 
+        }
+    }
 }
 
 Vue.createApp(App).mount('#app')
