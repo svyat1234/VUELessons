@@ -59,10 +59,12 @@ h3 {
     font-size: 1.35rem;
 }
 
-/*.primary {*/
-/*    color: #42b983;*/
-/*}*/
-
+.primary {
+    color: #42b983;
+}
+.bold {
+    font-weight: bold;
+}
 /*.danger {*/
 /*    color: #e53935;*/
 /*}*/

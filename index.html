@@ -12,24 +12,31 @@
     
     <div class="container" id="app">
         <div class="card">
-            <h1>{{ title }}</h1>
+            <h1 :style="{
+                color: appInputValue.length > 5 ? 'red' : 'blue',
+                fontSize: appInputValue.length < 6 ? '2rem' : '1.5rem'
+            }">{{ title }}</h1>
             <div class="form-control">
                 <input 
                     type="text" 
-                    v-bind:placeholder="appPlaceholder" 
-                    v-bind:value="appInputValue"
-                    v-on:input="appInputChanger"
-                    v-on:keypress.enter="addNewAppNote"
+                    :placeholder="appPlaceholder" 
+                    v-model="appInputValue"
+                    @keypress.enter="addNewAppNote"
                 >
             </div>
             <!-- /.form-control -->
-            <button class="btn" v-on:click="addNewAppNote">Добавить</button>
+            <button class="btn" @click="addNewAppNote">Добавить</button>
             <hr>
             <ul class="list" v-if="appNotes.length !== 0">
                 <li class="list-item" v-for="(myNote, i) in appNotes">
-                    ({{ i + 1 }}) {{ myNote }}
-                    <button class="btn danger" v-on:click="removeAppNote(i)">Удалить</button>
+                    <span :class="[
+                    'primary', 
+                    {'bold': myNote.length > 5}
+                    ]">({{ i + 1 }}) {{ toUpperCase(myNote) }}</span>
+                    <button class="btn danger" @click="removeAppNote(i)">Удалить</button>
                 </li>
+                <hr>
+                <strong>Количество заметок: {{ appNotes.length }}</strong> | x2: {{ doubleCountComputed }}
             </ul>
             <div v-else>Заметок пока нет.</div>
         </div>
